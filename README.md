@@ -20,12 +20,6 @@ Rotas da API:
             "approved": true
         }
 
-    body:
-
-        {
-            "message": "Pessoa inserida no sistema com sucesso!"
-        }
-
     Visualizar pessoas: GET (localhost:3000/person)
 
     Resgatar pessoas: GET (localhost:3000/person/{ID})
