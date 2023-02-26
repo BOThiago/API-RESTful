@@ -1,0 +1,21 @@
+{
+  "name": "api-restful",
+  "version": "1.0.0",
+  "description": "CRUD com Node, Express e Mongoose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/index.js localhost 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BOThiago/API-RESTful.git"
+  },
+  "keywords": [],
+  "author": "Thiago Barreto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BOThiago/API-RESTful/issues"
+  },
+  "homepage": "https://github.com/BOThiago/API-RESTful#readme"
+}
