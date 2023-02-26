@@ -1,16 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
-
 const app = express();
 
 //Adicione as variáveis de ambiente para a conexão do banco de dados no diretório .env
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
-const MODEL_PERSON = process.env.MODEL_PERSON;
+const PERSON_ROUTE = process.env.PERSON_ROUTE;
 
-//Referencie o diretório "./models/Person.js" em .env "MODEL_PERSON"
-const Person = require(MODEL_PERSON);
+//Referencie o diretório "./routes/personRoutes.js" em .env "PERSON_ROUTE"
+const personRoutes = require(`${PERSON_ROUTE}`);
 
 app.use(
     express.urlencoded({
@@ -20,37 +19,7 @@ app.use(
 
 app.use(express.json());
 
-app.post("/person", async (req, res) => {
-    const { name, salary, approved } = req.body;
-
-    if (!name) {
-        res.status(422).json({ error: "O nome é obrigatório!" });
-    }
-
-    if (!salary) {
-        res.status(422).json({ error: "O salário é obrigatório!" });
-    }
-
-    if (!name) {
-        res.status(422).json({ error: "A aprovação é obrigatória!" });
-    }
-
-    const person = {
-        name,
-        salary,
-        approved,
-    };
-
-    try {
-        await Person.create(person);
-
-        res.status(201).json({
-            message: "Pessoa inserida no sistema com sucesso!",
-        });
-    } catch (error) {
-        res.status(500).json({ error: error });
-    }
-});
+app.use("/person", personRoutes);
 
 app.get("/", (req, res) => {
     res.json({
